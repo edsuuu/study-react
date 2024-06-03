@@ -1,0 +1,19 @@
+.LifeCicleMethodsParte1 {
+    margin: 10px;
+    width: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+
+.LifeCicleMethodsParte1-titulo{
+    background-color: rgb(15, 5, 109);
+    color: white;
+}
+
+.numeroOne {
+    padding: 10px;
+    background-color: aqua;
+}

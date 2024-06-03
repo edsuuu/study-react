@@ -1,0 +1,23 @@
+.BuscandoDadosExternos-container {
+    min-height: 100vh;
+}
+
+.BuscandoDadosExternos {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.blocos {
+    border: 1px solid black;
+    padding: 10px;
+    height: auto;
+
+}
+.blocos:hover {
+    transform: scale(1.05);
+}
+img {
+    width: 100%;
+}
