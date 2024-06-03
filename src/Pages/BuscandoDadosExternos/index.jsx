@@ -1,10 +1,10 @@
-import { Component } from 'react';
-import './BuscandoDadosExternos.css'
-import PostCard from '../../Components/PostCard';
+import { Component } from "react";
+import "./BuscandoDadosExternos.css";
+import PostCard from "../../Components/PostCard";
 
 export class BuscandoDadosExternos extends Component {
   state = {
-    posts: []
+    posts: [],
   };
 
   componentDidMount() {
@@ -12,8 +12,8 @@ export class BuscandoDadosExternos extends Component {
   }
 
   loadPosts = async () => {
-    const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
-    const fotosResponse = fetch('https://jsonplaceholder.typicode.com/photos');
+    const postsResponse = fetch("https://jsonplaceholder.typicode.com/posts");
+    const fotosResponse = fetch("https://jsonplaceholder.typicode.com/photos");
 
     const [posts, fotos] = await Promise.all([postsResponse, fotosResponse]);
 
@@ -21,24 +21,28 @@ export class BuscandoDadosExternos extends Component {
     const fotosJSON = await fotos.json();
 
     const postAndPhotos = postsJSON.map((post, index) => {
-      return { ...post, cover: fotosJSON[index].url }
-    })
+      return { ...post, cover: fotosJSON[index].url };
+    });
 
     // console.log(postAndPhotos);
-    this.setState({ posts: postAndPhotos })
-
-  }
+    this.setState({ posts: postAndPhotos });
+  };
 
   render() {
     const { posts } = this.state;
 
     return (
-      <div className='BuscandoDadosExternos-container'>
+      <div className="BuscandoDadosExternos-container">
         <h1>Buscando Dados Externos da api jsonplaceholder</h1>
-        <div className='BuscandoDadosExternos'>
+        <div className="BuscandoDadosExternos">
           {/* Exibindo os posts */}
-          {posts.map(post => (
-            <PostCard />
+          {posts.map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              body={post.body}
+              cover={post.cover}
+            />
           ))}
         </div>
       </div>

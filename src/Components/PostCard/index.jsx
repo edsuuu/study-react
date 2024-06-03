@@ -1,15 +1,13 @@
 import "./PostCard.css";
 
-export default function PostCard(props) {
-    console.log(props);
+export default function PostCard({ title, cover, body}) {
   return (
-    <>
-    <h1>aa</h1>
-      {/* <div className="posts" key={post.id}>
-        <img src={post.cover} alt={post.title}></img>
-        <h1>{post.title}</h1>
-        <p>{post.body}</p>
-      </div> */}
-    </>
+    <div className="post" >
+      <img src={cover} alt={title}></img>
+      <div className="posts">
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+    </div>
   );
 }

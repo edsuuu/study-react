@@ -1,10 +1,9 @@
-.posts {
+.post {
     border: 1px solid black;
     padding: 10px;
     height: auto;
-
 }
-.posts:hover {
+.post:hover {
     transform: scale(1.05);
 }
 img {
