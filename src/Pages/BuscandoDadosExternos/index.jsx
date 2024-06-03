@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './BuscandoDadosExternos.css'
+import PostCard from '../../Components/PostCard';
 
 export class BuscandoDadosExternos extends Component {
   state = {
@@ -23,7 +24,7 @@ export class BuscandoDadosExternos extends Component {
       return { ...post, cover: fotosJSON[index].url }
     })
 
-    console.log(postAndPhotos);
+    // console.log(postAndPhotos);
     this.setState({ posts: postAndPhotos })
 
   }
@@ -37,11 +38,7 @@ export class BuscandoDadosExternos extends Component {
         <div className='BuscandoDadosExternos'>
           {/* Exibindo os posts */}
           {posts.map(post => (
-            <div className='blocos' key={post.id}>
-              <img src={post.cover} alt={post.title}></img>
-              <h1>{post.title}</h1>
-              <p>{post.body}</p>
-            </div>
+            <PostCard />
           ))}
         </div>
       </div>
