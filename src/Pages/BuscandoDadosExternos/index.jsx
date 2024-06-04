@@ -10,7 +10,7 @@ export class BuscandoDadosExternos extends Component {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPorPagina: 6,
+    postsPorPagina: 10,
     searchValue: "",
   };
 
