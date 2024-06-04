@@ -10,11 +10,11 @@ export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/BuscandoDadosExternos" element={<BuscandoDadosExternos />} />
-            <Route path="/BuscandoDadosInternos" element={<BuscandoDadosInternos />} />
-            <Route path="/TrocandoNome" element={<TrocandoNome />} />
-            <Route path="/LifeCicleMethodsParte1" element={<LifeCicleMethodsParte1 />} />
-            <Route path="/Contador" element={<Contador />} />
+            <Route path="/buscando-dados-externos" element={<BuscandoDadosExternos />} />
+            <Route path="/buscando-dados-internos" element={<BuscandoDadosInternos />} />
+            <Route path="/trocando-nome" element={<TrocandoNome />} />
+            <Route path="/lifeCicle-methods-parte1" element={<LifeCicleMethodsParte1 />} />
+            <Route path="/contador" element={<Contador />} />
         </Routes>
     );
 }
