@@ -1,9 +1,9 @@
 import { Component } from "react";
 import PostCard from "../../Components/PostCard";
 import { loadPost } from "../../utils/load-posts";
-import "./BuscandoDadosExternos.css";
 import { Button } from "../../Components/Button";
 import TextInput from "../../Components/TextInput";
+import "./BuscandoDadosExternos.css";
 
 export class BuscandoDadosExternos extends Component {
   state = {
