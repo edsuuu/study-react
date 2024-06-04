@@ -1,0 +1,14 @@
+.button {
+    width: 100%;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.button:disabled {
+    background-color: rgb(139, 39, 0);
+    color: white;
+    
+}

@@ -8,3 +8,9 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
+
+.button-container{
+    min-height: 70px;
+    display: flex;
+    align-items: flex-end;
+}

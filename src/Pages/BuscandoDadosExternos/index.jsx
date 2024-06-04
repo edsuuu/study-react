@@ -1,42 +1,74 @@
 import { Component } from "react";
-import "./BuscandoDadosExternos.css";
 import PostCard from "../../Components/PostCard";
+import { loadPost } from "../../utils/load-posts";
+import "./BuscandoDadosExternos.css";
+import { Button } from "../../Components/Button";
+import TextInput from "../../Components/TextInput";
 
 export class BuscandoDadosExternos extends Component {
   state = {
     posts: [],
+    allPosts: [],
+    page: 0,
+    postsPorPagina: 6,
+    searchValue: "",
   };
 
-  componentDidMount() {
-    this.loadPosts();
+  async componentDidMount() {
+    await this.loadPosts();
   }
 
   loadPosts = async () => {
-    const postsResponse = fetch("https://jsonplaceholder.typicode.com/posts");
-    const fotosResponse = fetch("https://jsonplaceholder.typicode.com/photos");
+    const { page, postsPorPagina } = this.state;
+    const postAndPhotos = await loadPost();
 
-    const [posts, fotos] = await Promise.all([postsResponse, fotosResponse]);
-
-    const postsJSON = await posts.json();
-    const fotosJSON = await fotos.json();
-
-    const postAndPhotos = postsJSON.map((post, index) => {
-      return { ...post, cover: fotosJSON[index].url };
+    this.setState({
+      //
+      posts: postAndPhotos.slice(page, postsPorPagina),
+      allPosts: postAndPhotos,
     });
+  };
 
-    // console.log(postAndPhotos);
-    this.setState({ posts: postAndPhotos });
+  carregueMaisPosts = () => {
+    const { page, postsPorPagina, allPosts, posts } = this.state;
+    const proximaPage = page + postsPorPagina;
+    const nextPage = allPosts.slice(proximaPage, proximaPage + postsPorPagina);
+    posts.push(...nextPage);
+
+    this.setState({ posts, page: proximaPage });
+  };
+
+  handleChange = (e) => {
+    const { value } = e.target;
+    this.setState({ searchValue: value });
   };
 
   render() {
-    const { posts } = this.state;
+    const { posts, page, postsPorPagina, allPosts, searchValue } = this.state;
+    const noMorePosts = page + postsPorPagina >= allPosts.length;
+
+    const postsFiltrados = !!searchValue
+      ? allPosts.filter((post) => {
+          return post.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+      : posts;
 
     return (
       <div className="BuscandoDadosExternos-container">
         <h1>Buscando Dados Externos da api jsonplaceholder</h1>
+        <div>
+          <TextInput  searchValue={searchValue} handleChange={this.handleChange}/>
+          {/* se tiver uma busca no input o h1 aparece */}
+          {!!searchValue && (
+            <>
+              <h1>Texto digitado no input: {searchValue}</h1>
+            </>
+          )}
+        </div>
         <div className="BuscandoDadosExternos">
           {/* Exibindo os posts */}
-          {posts.map((post) => (
+
+          {postsFiltrados.map((post) => (
             <PostCard
               key={post.id}
               title={post.title}
@@ -44,6 +76,20 @@ export class BuscandoDadosExternos extends Component {
               cover={post.cover}
             />
           ))}
+
+          {postsFiltrados.length === 0 && (
+            <h1> nao existe post com esse nome</h1>
+          )}
+        </div>
+        <div className="button-container">
+          {/* se tiver uma busca no input o botao some */}
+          {!searchValue && (
+            <Button
+              disabled={noMorePosts}
+              onClick={this.carregueMaisPosts}
+              text="Carregar mais posts "
+            />
+          )}
         </div>
       </div>
     );
