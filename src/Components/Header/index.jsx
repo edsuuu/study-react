@@ -10,6 +10,7 @@ export default function Header() {
         { text: 'Contador', path: 'contador' },
         { text: 'LifeCicleMethodsParte1', path: '/lifeCicle-methods-parte1' },
         { text: 'TrocandoNome', path: '/trocando-nome' },
+        { text: 'UseState', path: '/buscando-dados-com-use-state' },
 
     ];
 

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../Pages/Home';
 import { BuscandoDadosExternos } from '../Pages/BuscandoDadosExternos';
+import { BuscandoDadosExternosComUseState } from '../Pages/BuscandoDadosExternosComUseState';
 import { BuscandoDadosInternos } from '../Pages/BuscandoDadosInternos';
 import { TrocandoNome } from '../Pages/TrocandoNome';
 import { LifeCicleMethodsParte1 } from '../Pages/LifeCicleMethodsParte1';
@@ -11,6 +12,7 @@ export default function AppRoutes() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/buscando-dados-externos" element={<BuscandoDadosExternos />} />
+            <Route path="/buscando-dados-com-use-state" element={<BuscandoDadosExternosComUseState />} />
             <Route path="/buscando-dados-internos" element={<BuscandoDadosInternos />} />
             <Route path="/trocando-nome" element={<TrocandoNome />} />
             <Route path="/lifeCicle-methods-parte1" element={<LifeCicleMethodsParte1 />} />
